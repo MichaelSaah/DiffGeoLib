@@ -1,0 +1,6 @@
+A small library for animating parametric plane curves. Plots curve, 1st derivative and 2nd derivative.
+More features forthcoming.
+
+Intended mainly as a pedagogical tool for vector calculus and differential geometry courses.
+
+Written on Python 3.6. Requires PyGame and NumPy.
