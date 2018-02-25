@@ -22,7 +22,7 @@ class Animator:
         self.origin = self.Point(self.size.x//2, self.size.y//2)
         self.curve = Curve(f)
         self.fps = fps
-        if ds >= 0:
+        if ds > 0:
             self.ds = ds
         else:
             raise ValueError('ds must be positive real number')
