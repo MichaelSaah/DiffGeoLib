@@ -8,7 +8,7 @@ class Animator:
     Simply pass it a function f: s -> (x,y) and call run().
     Click and drag to move around. Scroll to zoom."""
 
-    def __init__(self, f, scale=1, size=(800, 600), ds=0.05, fps=30, max_hist=200):
+    def __init__(self, f, scale=1, axes=True, size=(800, 600), ds=0.05, fps=30, max_hist=200):
         """Set up the animation environment.
         size: 2-tuple, Window size
         scale: Scalar, Default zoom
@@ -19,6 +19,7 @@ class Animator:
         self.Point = namedtuple('Point', ['x', 'y'])
         self.size = self.Point(*size)
         self.scale = scale
+        self.axes = axes
         self.origin = self.Point(self.size.x//2, self.size.y//2)
         self.curve = Curve(f)
         self.fps = fps
@@ -41,7 +42,8 @@ class Animator:
                        'w': (255, 255, 255),
                        'b': (0, 0, 255),
                        'g': (0, 255, 0),
-                       'r': (255, 0, 0)}
+                       'r': (255, 0, 0),
+                       'gr':(100,100,100)}
 
     def run(self):
         """Run the animation."""
@@ -79,10 +81,15 @@ class Animator:
             d1 = self.curve.derivative(self.s, self.ds/2, 1)
             d2 = self.curve.derivative(self.s, self.ds/2, 2)
 
+            # draw axes
+            if self.axes:
+                pg.draw.line(self.slate, self.colors['gr'], (0, self.origin.y), (self.size.x, self.origin.y), 1)
+                pg.draw.line(self.slate, self.colors['gr'], (self.origin.x, 0), (self.origin.x, self.size.x), 1)
+
             # draw curve points
             for pt in self.history:
                 pt = self._translate_and_scale(pt)
-                pt = list(map(lambda x: int(round(x)), pt))
+                pt = self._round_to_int(pt)
                 pg.draw.circle(self.slate, self.colors['w'], pt, 1)
 
             # draw derivative vectors
@@ -102,4 +109,12 @@ class Animator:
     def _translate_and_scale(self, point):
         """Scale point and translate for origin offset"""
 
-        return self.origin.x + self.scale*point[0], self.origin.y - self.scale*point[1]
+        new_point = (self.origin.x  + self.scale*point[0],
+                    self.origin.y  - self.scale*point[1])
+
+        return new_point
+
+    @staticmethod
+    def _round_to_int(point):
+
+        return tuple(map(lambda x: int(round(x)), point))
