@@ -7,6 +7,7 @@ Intended as a pedagogical tool for vector calculus and differential geometry cou
 Written for python 3.x.
 
 ## Examples
+The red vector is the first derivative of the curve. The green vector is the second derivative.
 
 #### Circle
 ![circle](https://github.com/MichaelSaah/DiffGeoLib/blob/master/circle.gif "a circle")
