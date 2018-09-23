@@ -6,7 +6,7 @@ Intended as a pedagogical tool for vector calculus and differential geometry cou
 
 Written for python 3.x.
 
-##Examples
+## Examples
 
 #### Circle
 ![circle](https://github.com/MichaelSaah/DiffGeoLib/blob/master/circle.gif "a circle")
