@@ -6,6 +6,6 @@ Written for python 3.x.
 
 Examples:
 
-![circle]( "a circle")
-![aemniscate]( "a lemniscate")
-![astroid]("an astroid")
+![circle](https://github.com/MichaelSaah/DiffGeoLib/blob/master/circle.gif "a circle")
+![lemniscate](https://github.com/MichaelSaah/DiffGeoLib/blob/master/lemniscate.gif "a lemniscate")
+![astroid](https://github.com/MichaelSaah/DiffGeoLib/blob/master/astroid.gif "an astroid")
