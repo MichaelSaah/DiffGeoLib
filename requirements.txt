@@ -1,0 +1,4 @@
+numpy (1.15.2)
+pip (9.0.1)
+pygame (1.9.4)
+setuptools (28.8.0)
